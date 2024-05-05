@@ -8,19 +8,23 @@
   </h1>
 
   <form
-    class="mt-10 flex gap-6 justify-center items-center"
+    class="mt-10 flex flex-col md:flex-row gap-6 justify-center items-center"
     [formGroup]="form"
     (ngSubmit)="handleSubmit()"
   >
-  @if (form.get('file')?.valid) {
-    <i class="fas fa-file-excel text-5xl"></i>
-  }
-    <input
-      class="block w-full border-dashed border-2 border-gray-700 py-2 px-3 rounded-md cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:cursor-pointer file:bg-gray-900 file:text-white hover:file:bg-gray-600"
-      type="file"
-      accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-      (change)="handleChange($event)"
-    />
+
+  <div class="flex flex-row gap-4">
+    @if (form.get('file')?.valid) {
+      <i class="fas fa-file-excel text-5xl"></i>
+    }
+      <input
+        class="block w-full border-dashed border-2 border-gray-700 py-2 px-3 rounded-md cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:cursor-pointer file:bg-gray-900 file:text-white hover:file:bg-gray-600"
+        type="file"
+        accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        (change)="handleChange($event)"
+      />
+  </div>
+
 
 
     <button
