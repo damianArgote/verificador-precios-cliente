@@ -1,0 +1,30 @@
+
+  <div class="h-screen w-screen  bg-gradient-to-b from-green-400 to-blue-500 flex justify-center items-center flex-col">
+    <h1 class="text-center text-4xl md:text-8xl text-gray-800 uppercase font-bold">Consulta de  precios</h1>
+
+    <div class="mt-10 flex justify-center">
+      <input
+      #inputPrompt
+      class="border-2 border-gray-700 w-80 py-2 px-3 rounded-md "
+      type="text"
+      placeholder="Acerca el producto al scanner..."
+      autofocus
+      (keydown.enter)="handleEnter()"/>
+    </div>
+
+    @if (producto()) {
+      <div class="mt-10 text-center">
+        <p class="text-4xl md:text-9xl font-bold mb-5">{{producto()?.precio | currency:'ARS':'symbol-narrow'}}</p>
+        <p class="text-xl md:text-3xl">{{producto()?.descripcion}}</p>
+      </div>
+    }
+    @if (msg()) {
+      <div class="mt-10 text-center bg-red-300 rounded-md p-3 mx-5">
+        <p class="text-white text-3xl md:text-6xl font-bold uppercase">{{msg()}}</p>
+      </div>
+    }
+
+    @if (isLoading()) {
+      <app-spinner></app-spinner>
+    }
+  </div>
